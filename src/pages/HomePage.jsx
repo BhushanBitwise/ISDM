@@ -25,9 +25,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 function SectionLabel({ number, text }) {
   return (
-    <p className="section-label" style={{ marginBottom: '1rem' }}>
-      {number} / {text}
-    </p>
+    <div className="section-label-wrap" style={{ marginBottom: '1.25rem' }}>
+      <span className="section-label-num">{number}</span>
+      <span className="section-label-divider">/</span>
+      <span className="section-label-text">{text}</span>
+    </div>
   );
 }
 
@@ -87,6 +89,8 @@ export default function HomePage() {
   // Scroll Triggers
   useEffect(() => {
     if (prefersReduced) return;
+    // On mobile devices (<= 768px), keep elements immediately visible to prevent touch scroll clipping
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) return;
     const ctx = gsap.context(() => {
       gsap.utils.toArray('.scroll-reveal').forEach((el) => {
         gsap.from(el, {
@@ -142,10 +146,13 @@ export default function HomePage() {
             <div style={{ marginBottom: '1.25rem' }}>
               <span className="award-pill award-pill-dark">
                 <span className="pulse-dot-lime" />
-                <span>Admissions Open 2025–26 · Pune · Nagpur · Singapore · Berlin</span>
+                <span>Admissions Open 2025–26 · Pune · Nagpur · Singapore · Germany</span>
               </span>
             </div>
-            <p className="hero-eyebrow">{siteConfig.hero.eyebrow}</p>
+            <p className="hero-eyebrow">
+              <span style={{ display: 'inline-block', width: '22px', height: '2px', background: 'var(--c-lime)', verticalAlign: 'middle', marginRight: '0.4rem' }} />
+              {siteConfig.hero.eyebrow}
+            </p>
             <h1 className="hero-headline">
               <span className="hero-line-1">{siteConfig.hero.headline1}</span>
               <br />
@@ -159,34 +166,37 @@ export default function HomePage() {
                 {siteConfig.hero.cta1.label}
                 <ArrowRight size={16} />
               </Link>
-              <Link to="/contact" className="btn" style={{background:'rgba(255,255,255,0.12)', color:'#fff', border:'1.5px solid rgba(255,255,255,0.25)', backdropFilter:'blur(4px)'}}>
+              <Link to="/contact" className="hero-btn-secondary">
                 Talk to an Advisor
               </Link>
             </div>
-            <p className="hero-support">{siteConfig.hero.supportingLine}</p>
+            <p className="hero-support">
+              <span className="support-star">✦</span>
+              <span>{siteConfig.hero.supportingLine}</span>
+            </p>
           </div>
         </div>
       </section>
 
       {/* ── IMPACT METRICS STRIP ──────────────────────────────── */}
-      <section className="metrics-strip" style={{ background: '#1c1d19', color: '#fff', borderTop: '1px solid #2e2f2a', borderBottom: '1px solid #2e2f2a', padding: '2.5rem 0' }}>
+      <section className="metrics-strip">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
-            <div style={{ borderLeft: '2px solid var(--c-lime)', paddingLeft: '1.25rem' }}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', fontWeight: '700', lineHeight: '1', color: 'var(--c-lime)', marginBottom: '0.35rem' }}>12</p>
-              <p style={{ fontSize: '0.875rem', color: 'var(--c-text-dark)', fontWeight: '500' }}>In-Depth Curriculum Modules</p>
+          <div className="metrics-grid">
+            <div className="metric-box metric-box-blue">
+              <p className="metric-value metric-value-blue">12</p>
+              <p className="metric-label">In-Depth Curriculum Modules</p>
             </div>
-            <div style={{ borderLeft: '2px solid var(--c-cobalt)', paddingLeft: '1.25rem' }}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', fontWeight: '700', lineHeight: '1', color: '#fff', marginBottom: '0.35rem' }}>4 Hubs</p>
-              <p style={{ fontSize: '0.875rem', color: 'var(--c-text-dark)', fontWeight: '500' }}>Pune · Nagpur · Singapore · Berlin</p>
+            <div className="metric-box metric-box-cobalt">
+              <p className="metric-value metric-value-cobalt">4 Hubs</p>
+              <p className="metric-label">Pune · Nagpur · Singapore · Germany</p>
             </div>
-            <div style={{ borderLeft: '2px solid #ffffff', paddingLeft: '1.25rem' }}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', fontWeight: '700', lineHeight: '1', color: '#fff', marginBottom: '0.35rem' }}>100%</p>
-              <p style={{ fontSize: '0.875rem', color: 'var(--c-text-dark)', fontWeight: '500' }}>Hands-on Campaign Portfolios</p>
+            <div className="metric-box metric-box-emerald">
+              <p className="metric-value metric-value-emerald">100%</p>
+              <p className="metric-label">Hands-on Campaign Portfolios</p>
             </div>
-            <div style={{ borderLeft: '2px solid var(--c-lime)', paddingLeft: '1.25rem' }}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', fontWeight: '700', lineHeight: '1', color: 'var(--c-lime)', marginBottom: '0.35rem' }}>AI-Native</p>
-              <p style={{ fontSize: '0.875rem', color: 'var(--c-text-dark)', fontWeight: '500' }}>Generative AI & LLM Workflows</p>
+            <div className="metric-box metric-box-violet">
+              <p className="metric-value metric-value-violet">AI-Native</p>
+              <p className="metric-label">Generative AI & LLM Workflows</p>
             </div>
           </div>
         </div>
@@ -335,7 +345,7 @@ export default function HomePage() {
       {/* ── PRACTICAL LEARNING ───────────────────────────────── */}
       <section className="section-py section-dark" aria-label="Learn by Doing">
         <div className="container">
-          <div className="two-col">
+          <div className="two-col learn-by-doing-grid">
             <div className="sticky-img scroll-reveal">
               <Img
                 src="/images/02-classroom-training.png.webp"
@@ -360,11 +370,12 @@ export default function HomePage() {
                   { title: 'Advertising Strategy', desc: 'Create a sample paid campaign plan with defined objectives, audience strategy, and a reporting framework.' },
                   { title: 'AI Marketing Workflow', desc: 'Combine AI-assisted research, content drafting, human review, and performance analysis into a documented workflow.' },
                 ].map((p, i) => (
-                  <div key={i} style={{padding:'1.25rem', background:'rgba(255,255,255,0.05)', borderRadius:'0.875rem', border:'1px solid rgba(255,255,255,0.08)'}}>
-                    <h3 style={{fontFamily:'var(--font-display)', fontSize:'1rem', fontWeight:'600', color:'#fff', marginBottom:'0.375rem'}}>
-                      {p.title}
+                  <div key={i} className="practical-card">
+                    <h3 className="practical-card-title">
+                      <span className="practical-card-bullet">✦</span>
+                      <span>{p.title}</span>
                     </h3>
-                    <p style={{fontSize:'0.875rem', color:'var(--c-text-dark)', lineHeight:'1.6'}}>{p.desc}</p>
+                    <p className="practical-card-desc">{p.desc}</p>
                   </div>
                 ))}
               </div>
@@ -413,23 +424,23 @@ export default function HomePage() {
               <span className="serif-accent" style={{color:'var(--c-lime)'}}>Built for Practice.</span>
             </h2>
           </div>
-          <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1rem'}} className="stagger-children">
+          <div className="learning-env-grid stagger-children">
             {[
               { src:'/images/08-student-collaboration.webp', label:'Student Collaboration', cap:'Peer projects and marketing discussions' },
               { src:'/images/09-workshop-seminar.webp', label:'Workshops & Seminars', cap:'Expert-led learning sessions' },
               { src:'/images/10-student-community.webp', label:'Community', cap:'Better ideas start with better collaboration' },
             ].map((img, i) => (
-              <div key={i} style={{borderRadius:'1rem', overflow:'hidden', aspectRatio:'4/3', position:'relative'}}>
+              <div key={i} className="learning-env-card">
                 <Img
                   src={img.src}
                   alt={img.label}
                   style={{width:'100%', height:'100%', objectFit:'cover'}}
                   loading="lazy"
                 />
-                <div style={{position:'absolute', inset:0, background:'linear-gradient(to top, rgba(21,21,21,0.7) 0%, transparent 60%)'}}>
+                <div style={{position:'absolute', inset:0, background:'linear-gradient(to top, rgba(21,21,21,0.85) 0%, rgba(21,21,21,0.2) 60%, transparent 100%)'}}>
                   <div style={{position:'absolute', bottom:0, left:0, right:0, padding:'1.25rem'}}>
                     <p style={{fontFamily:'var(--font-display)', fontWeight:'600', fontSize:'0.9375rem', color:'#fff'}}>{img.label}</p>
-                    <p style={{fontSize:'0.8125rem', color:'rgba(255,255,255,0.6)', marginTop:'0.2rem'}}>{img.cap}</p>
+                    <p style={{fontSize:'0.8125rem', color:'rgba(255,255,255,0.7)', marginTop:'0.2rem', lineHeight:'1.5'}}>{img.cap}</p>
                   </div>
                 </div>
               </div>
@@ -453,7 +464,7 @@ export default function HomePage() {
               <span className="serif-accent">Global Perspective.</span>
             </h2>
           </div>
-          <div style={{display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:'1rem'}} className="stagger-children">
+          <div className="locations-grid stagger-children">
             {locations.map((loc) => {
               const statusColor = getLocationStatusColor(loc.status);
               const statusLabel = getLocationStatusLabel(loc.status);
@@ -487,7 +498,7 @@ export default function HomePage() {
                         {loc.country}
                       </span>
                       {loc.timezone && (
-                        <span style={{ color: 'var(--c-lime)', fontSize: '0.6875rem' }}>
+                        <span style={{ color: 'var(--c-lime)', fontSize: '0.6875rem', fontWeight: 600, textShadow: '0 0 10px rgba(213,255,63,0.35)' }}>
                           {loc.timezone}
                         </span>
                       )}

@@ -7,7 +7,7 @@ export default function MarqueeTicker({ items, dark = true, speed = '30s' }) {
     'TECHNICAL SEO',
     'DATA & GA4 ANALYTICS',
     'PORTFOLIO FIRST',
-    'PUNE · NAGPUR · SINGAPORE · BERLIN',
+    'PUNE · NAGPUR · SINGAPORE · GERMANY',
   ];
 
   const displayList = items || defaultItems;
@@ -18,7 +18,7 @@ export default function MarqueeTicker({ items, dark = true, speed = '30s' }) {
         {displayList.map((text, idx) => (
           <span key={idx} style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5rem', fontSize: '0.8125rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
             <span>{text}</span>
-            <span style={{ color: 'var(--c-lime)', fontSize: '1rem' }}>✦</span>
+            <span style={{ color: 'var(--c-lime)', fontSize: '1rem', textShadow: '0 0 12px rgba(213, 255, 63, 0.7)' }}>✦</span>
           </span>
         ))}
       </div>
@@ -26,7 +26,7 @@ export default function MarqueeTicker({ items, dark = true, speed = '30s' }) {
         {displayList.map((text, idx) => (
           <span key={`dup-${idx}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5rem', fontSize: '0.8125rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
             <span>{text}</span>
-            <span style={{ color: 'var(--c-lime)', fontSize: '1rem' }}>✦</span>
+            <span style={{ color: 'var(--c-lime)', fontSize: '1rem', textShadow: '0 0 12px rgba(213, 255, 63, 0.7)' }}>✦</span>
           </span>
         ))}
       </div>

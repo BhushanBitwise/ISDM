@@ -26,7 +26,7 @@ export default function LocationsPage() {
             ⚠️ <strong>Important:</strong> All location details on this page represent ISDM's intended presence and are illustrative. Please enquire directly for current addresses, schedules, and availability. Do not visit any location without confirming details first.
           </div>
 
-          <div style={{display:'grid', gridTemplateColumns:'repeat(2, 1fr)', gap:'1.5rem'}}>
+          <div className="locations-page-grid">
             {locations.map(loc => {
               const statusColor = getLocationStatusColor(loc.status);
               const statusLabel = getLocationStatusLabel(loc.status);
