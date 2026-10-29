@@ -1,0 +1,178 @@
+/* ============================================================
+   ISDM — ANIMATION STYLES
+   ============================================================ */
+
+/* ─── INITIAL STATES (before GSAP kicks in) ─────────────────── */
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.anim-fade-in {
+  opacity: 0;
+}
+
+.anim-slide-left {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.anim-slide-right {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.anim-scale {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+/* When JS is disabled or reduced motion is preferred,
+   show all content immediately */
+.no-js .anim-fade-up,
+.no-js .anim-fade-in,
+.no-js .anim-slide-left,
+.no-js .anim-slide-right,
+.no-js .anim-scale {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up,
+  .anim-fade-in,
+  .anim-slide-left,
+  .anim-slide-right,
+  .anim-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ─── CSS KEYFRAME ANIMATIONS ────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-lime {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(213, 255, 63, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(213, 255, 63, 0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes underline-draw {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* ─── UTILITY ANIMATION CLASSES ──────────────────────────────── */
+.animate-fade-up {
+  animation: fadeUp 0.6s var(--ease-out) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s var(--ease-out) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s var(--ease-out) both;
+}
+
+/* Stagger delays for lists */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ─── UNDERLINE DRAW EFFECT ──────────────────────────────────── */
+.underline-draw {
+  position: relative;
+  display: inline-block;
+}
+.underline-draw::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--c-lime);
+  transition: width 0.4s var(--ease-out);
+}
+.underline-draw:hover::after,
+.underline-draw.active::after {
+  width: 100%;
+}
+
+/* ─── FLOATING WHATSAPP BUTTON ───────────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out);
+  animation: pulse-lime 3s ease-in-out infinite;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
+  animation-play-state: paused;
+}
+
+/* ─── PAGE TRANSITION ────────────────────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.4s ease both;
+}
+
+/* ─── LOADING SKELETON ───────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--c-border) 25%,
+    #ebe9e2 50%,
+    var(--c-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.375rem;
+}
