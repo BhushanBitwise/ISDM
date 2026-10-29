@@ -143,7 +143,7 @@ export default function HomePage() {
         <div className="hero-overlay" aria-hidden="true" />
         <div className="container">
           <div className="hero-content">
-            <div style={{ marginBottom: '1.25rem' }}>
+            <div className="hero-pill-wrap">
               <span className="award-pill award-pill-dark">
                 <span className="pulse-dot-lime" />
                 <span>Admissions Open 2025–26 · Pune · Nagpur · Singapore · Germany</span>
