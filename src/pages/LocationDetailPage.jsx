@@ -9,7 +9,12 @@ import { siteConfig } from '../data/siteConfig';
 
 export default function LocationDetailPage() {
   const { slug } = useParams();
-  const location = locations.find(l => l.slug === slug);
+  const location = locations.find(
+    l => l.slug === slug || l.id === slug || 
+    (slug === 'united-states' && l.id === 'us') || 
+    (slug === 'usa' && l.id === 'us') || 
+    (slug === 'united-kingdom' && l.id === 'uk')
+  );
 
   if (!location) return <Navigate to="/404" replace />;
 

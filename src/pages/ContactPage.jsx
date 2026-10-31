@@ -75,7 +75,8 @@ export default function ContactPage() {
                 <p className="section-label" style={{marginBottom:'1rem'}}>LOCATIONS</p>
                 <div style={{display:'flex', flexDirection:'column', gap:'0.5rem'}}>
                   <Link to="/locations/pune" className="link-arrow">Pune — Maharashtra, India <ArrowRight size={13} /></Link>
-                  <Link to="/locations/nagpur" className="link-arrow">Nagpur — Maharashtra, India <ArrowRight size={13} /></Link>
+                  <Link to="/locations/us" className="link-arrow">United States — New York, USA <ArrowRight size={13} /></Link>
+                  <Link to="/locations/uk" className="link-arrow">United Kingdom — London, UK <ArrowRight size={13} /></Link>
                   <Link to="/locations/singapore" className="link-arrow">Singapore (Planned) <ArrowRight size={13} /></Link>
                   <Link to="/locations/germany" className="link-arrow">Germany / Berlin (Planned) <ArrowRight size={13} /></Link>
                 </div>

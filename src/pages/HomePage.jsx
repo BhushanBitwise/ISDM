@@ -98,6 +98,7 @@ export default function HomePage() {
           y: 30,
           duration: 0.7,
           ease: 'power3.out',
+          clearProps: 'all',
           scrollTrigger: {
             trigger: el,
             start: 'top 85%',
@@ -114,6 +115,7 @@ export default function HomePage() {
           duration: 0.6,
           stagger: 0.1,
           ease: 'power3.out',
+          clearProps: 'all',
           scrollTrigger: {
             trigger: parent,
             start: 'top 80%',
@@ -146,7 +148,7 @@ export default function HomePage() {
             <div className="hero-pill-wrap">
               <span className="award-pill award-pill-dark">
                 <span className="pulse-dot-lime" />
-                <span>Admissions Open 2025–26 · Pune · Nagpur · Singapore · Germany</span>
+                <span>Admissions Open 2025–26 · Pune · US · UK · Singapore · Germany</span>
               </span>
             </div>
             <p className="hero-eyebrow">
@@ -187,8 +189,8 @@ export default function HomePage() {
               <p className="metric-label">In-Depth Curriculum Modules</p>
             </div>
             <div className="metric-box metric-box-cobalt">
-              <p className="metric-value metric-value-cobalt">4 Hubs</p>
-              <p className="metric-label">Pune · Nagpur · Singapore · Germany</p>
+              <p className="metric-value metric-value-cobalt">5 Hubs</p>
+              <p className="metric-label">Pune · US · UK · Singapore · Germany</p>
             </div>
             <div className="metric-box metric-box-emerald">
               <p className="metric-value metric-value-emerald">100%</p>
@@ -469,39 +471,64 @@ export default function HomePage() {
               const statusColor = getLocationStatusColor(loc.status);
               const statusLabel = getLocationStatusLabel(loc.status);
               return (
-                <Link to={`/locations/${loc.slug}`} key={loc.id} className="location-card" aria-label={`${loc.city} location — ${statusLabel}`}>
-                  <Img
-                    src={loc.image}
-                    alt={`${loc.city}, ${loc.country} — ISDM ${statusLabel}`}
-                    style={{width:'100%', height:'100%', objectFit:'cover'}}
-                    loading="lazy"
-                  />
-                  <div className="location-card-overlay" aria-hidden="true" />
-                  <div className="location-card-content">
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', marginBottom: '0.35rem' }}>
-                      <span className="location-status-badge" style={{background:`${statusColor}22`, color:statusColor, border:`1px solid ${statusColor}44`}}>
-                        <span className="location-status-dot" style={{background:statusColor}} />
+                <Link
+                  to={`/locations/${loc.slug}`}
+                  key={loc.id}
+                  className="location-card-premium"
+                  aria-label={`${loc.city} campus location — ${statusLabel}`}
+                >
+                  {/* Top Image Preview Banner */}
+                  <div className="loc-card-media">
+                    <Img
+                      src={loc.image}
+                      alt={`${loc.city}, ${loc.country} — ISDM campus`}
+                      className="loc-card-img"
+                      loading="lazy"
+                    />
+                    <div className="loc-card-overlay" aria-hidden="true" />
+                    
+                    {/* Top Badges Floating Over Image */}
+                    <div className="loc-card-top-badges">
+                      <span className="loc-status-pill" style={{ borderColor: `${statusColor}55`, color: statusColor }}>
+                        <span className="loc-status-glow-dot" style={{ background: statusColor, boxShadow: `0 0 8px ${statusColor}` }} />
                         {statusLabel}
                       </span>
                       {loc.hubCode && (
-                        <span style={{ fontSize: '0.625rem', fontFamily: 'monospace', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.08em', background: 'rgba(0,0,0,0.4)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
+                        <span className="loc-hub-pill">
                           {loc.hubCode}
                         </span>
                       )}
                     </div>
-                    <h3 style={{fontFamily:'var(--font-display)', fontSize:'1.25rem', fontWeight:'700', color:'#fff', lineHeight:'1.1', marginBottom:'0.25rem'}}>
-                      {loc.city}
-                    </h3>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)' }}>
-                      <span>
-                        <MapPin size={11} style={{display:'inline', marginRight:'0.25rem', verticalAlign:'middle'}} />
-                        {loc.country}
-                      </span>
+                  </div>
+
+                  {/* Clean Structured Content Body Below */}
+                  <div className="loc-card-body">
+                    <div className="loc-card-header-row">
+                      <div>
+                        <h3 className="loc-card-city">{loc.city}</h3>
+                        <p className="loc-card-region">
+                          <MapPin size={13} className="loc-pin-icon" />
+                          <span>{loc.region || loc.country}</span>
+                        </p>
+                      </div>
                       {loc.timezone && (
-                        <span style={{ color: 'var(--c-lime)', fontSize: '0.6875rem', fontWeight: 600, textShadow: '0 0 10px rgba(213,255,63,0.35)' }}>
+                        <span className="loc-tz-badge" title="Local Timezone">
                           {loc.timezone}
                         </span>
                       )}
+                    </div>
+
+                    <p className="loc-card-desc">
+                      {loc.intro}
+                    </p>
+
+                    <div className="loc-card-footer">
+                      <span className="loc-card-tag">
+                        {loc.programs?.length || 4} Programs
+                      </span>
+                      <span className="loc-card-cta">
+                        Explore Hub <ArrowRight size={14} className="loc-cta-arrow" />
+                      </span>
                     </div>
                   </div>
                 </Link>
@@ -556,22 +583,26 @@ export default function HomePage() {
           </div>
 
           <div style={{marginTop:'3rem'}} className="scroll-reveal">
-            <div style={{position:'relative', borderRadius:'1.25rem', overflow:'hidden', aspectRatio:'16/6', maxHeight:'360px'}}>
+            <div className="events-featured-banner">
               <Img
                 src="/images/09-workshop-seminar.webp"
                 alt="ISDM workshop and seminar session"
-                style={{width:'100%', height:'100%', objectFit:'cover'}}
+                className="events-banner-bg"
                 loading="lazy"
               />
-              <div style={{position:'absolute', inset:0, background:'linear-gradient(to right, rgba(21,21,21,0.8) 0%, rgba(21,21,21,0.3) 60%)'}}>
-                <div style={{position:'absolute', bottom:0, left:0, padding:'2.5rem', color:'#fff', maxWidth:'480px'}}>
-                  <p style={{fontSize:'0.75rem', letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--c-lime)', marginBottom:'0.75rem', fontWeight:'600'}}>UPCOMING</p>
-                  <h3 style={{fontFamily:'var(--font-display)', fontSize:'1.5rem', fontWeight:'700', lineHeight:'1.2', marginBottom:'0.75rem'}}>
-                    New workshops and learning sessions will be announced soon.
-                  </h3>
-                  <p style={{fontSize:'0.875rem', color:'rgba(255,255,255,0.65)', marginBottom:'1.5rem'}}>
-                    Stay connected to hear about AI in Marketing, SEO Masterclasses, Performance Marketing Workshops, and Content Creation Labs.
-                  </p>
+              <div className="events-banner-overlay" aria-hidden="true" />
+              <div className="events-banner-content">
+                <span className="events-upcoming-pill">
+                  <span className="pulse-dot-lime" style={{width:'5px', height:'5px'}} />
+                  UPCOMING SESSIONS
+                </span>
+                <h3 className="events-banner-title">
+                  New workshops and learning sessions will be announced soon.
+                </h3>
+                <p className="events-banner-desc">
+                  Stay connected to hear about AI in Marketing, SEO Masterclasses, Performance Marketing Workshops, and Content Creation Labs.
+                </p>
+                <div>
                   <Link to="/contact" className="btn btn-lime-dark">
                     Register Interest <ArrowRight size={15} />
                   </Link>
@@ -595,11 +626,11 @@ export default function HomePage() {
               <p style={{color:'var(--c-text-dark)', lineHeight:'1.75', marginBottom:'2.5rem', fontSize:'1rem'}}>
                 The final curriculum module covers professional development — portfolio building, personal branding, client communication, and interview preparation. Because skills are only valuable when you can present them.
               </p>
-              <div className="stagger-children" style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.75rem', marginBottom:'2.5rem'}}>
+              <div className="career-skills-grid stagger-children">
                 {['Portfolio Development', 'Resume Preparation', 'Interview Practice', 'Freelancing Fundamentals', 'Client Communication', 'Campaign Presentation'].map((item) => (
-                  <div key={item} style={{display:'flex', alignItems:'center', gap:'0.5rem', fontSize:'0.875rem', color:'var(--c-text-dark)'}}>
-                    <span style={{width:'6px', height:'6px', borderRadius:'50%', background:'var(--c-lime)', flexShrink:0}} />
-                    {item}
+                  <div key={item} className="career-skill-item">
+                    <span className="career-skill-dot" />
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>

@@ -128,7 +128,7 @@ export default function AboutPage() {
                 Digital marketing is a global discipline. The same analytical thinking, campaign planning, and content strategy skills that work in India are valuable in Singapore, Germany, or anywhere with an active digital economy.
               </p>
               <p className="text-body" style={{marginBottom:'1.25rem'}}>
-                ISDM's planned locations across Pune, Nagpur, Singapore, and Germany reflect a vision for learning that transcends geography while remaining grounded in local market understanding.
+                ISDM's planned locations across Pune, the United States, the United Kingdom, Singapore, and Germany reflect a vision for learning that transcends geography while remaining grounded in local market understanding.
               </p>
               <p className="text-body" style={{marginBottom:'2rem'}}>
                 All location information represents ISDM's intended presence. Please enquire directly about current availability at specific locations.

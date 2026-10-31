@@ -158,6 +158,14 @@
   box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
   animation-play-state: paused;
 }
+@media (max-width: 640px) {
+  .whatsapp-float {
+    bottom: 1rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+  }
+}
 
 /* ─── PAGE TRANSITION ────────────────────────────────────────── */
 .page-enter {

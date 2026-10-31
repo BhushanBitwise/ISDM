@@ -8,9 +8,10 @@
 // 02-classroom-training.png.webp     — Classroom / learning
 // 03-office-interior.webp            — Office interior / campus
 // 04-singapore-branch.webp           — Singapore skyline / location
-// 05-nagpur-branch.webp              — Nagpur location
 // 06-pune-branch.webp                — Pune location
 // 07-germany-branch.webp             — Germany location
+// 11-us-branch.jpg                   — United States location
+// 12-uk-branch.jpg                   — United Kingdom location
 // 08-student-collaboration.webp      — Students collaborating
 // 09-workshop-seminar.webp           — Workshop / seminar
 // 10-student-community.webp          — Student community
@@ -89,13 +90,22 @@ export const galleryItems = [
     location: 'Singapore',
   },
   {
-    id: 'g08',
-    src: '/images/05-nagpur-branch.webp',
-    alt: 'Nagpur, India — ISDM learning centre location',
-    title: 'Nagpur',
-    caption: 'Serving learners in the heart of India.',
+    id: 'g08_us',
+    src: '/images/11-us-branch.jpg',
+    alt: 'United States — ISDM learning centre and marketing innovation hub in New York',
+    title: 'United States',
+    caption: 'ISDM\'s state-of-the-art learning hub in the United States.',
     category: 'locations',
-    location: 'Nagpur, India',
+    location: 'United States',
+  },
+  {
+    id: 'g08_uk',
+    src: '/images/12-uk-branch.jpg',
+    alt: 'United Kingdom — ISDM London learning centre and tech quarter',
+    title: 'United Kingdom',
+    caption: 'ISDM\'s European learning presence in London, United Kingdom.',
+    category: 'locations',
+    location: 'United Kingdom',
   },
   {
     id: 'g09',

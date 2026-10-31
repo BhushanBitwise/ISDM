@@ -36,7 +36,8 @@ export const navigation = [
     href: '/locations',
     dropdown: [
       { label: 'Pune', href: '/locations/pune', region: 'Maharashtra, India' },
-      { label: 'Nagpur', href: '/locations/nagpur', region: 'Maharashtra, India' },
+      { label: 'United States', href: '/locations/us', region: 'New York, USA' },
+      { label: 'United Kingdom', href: '/locations/uk', region: 'London, UK' },
       { label: 'Singapore', href: '/locations/singapore', region: 'South-East Asia' },
       { label: 'Germany', href: '/locations/germany', region: 'Europe' },
     ],

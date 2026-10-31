@@ -42,7 +42,7 @@ export const siteConfig = {
     siteName: 'ISDM — International School of Digital Marketing',
     defaultTitle: 'ISDM | Learn Digital. Think Global.',
     defaultDescription:
-      'International School of Digital Marketing (ISDM) offers practical digital marketing education across Pune, Nagpur, Singapore, and Germany. Explore programs in SEO, Performance Marketing, AI Marketing, and more.',
+      'International School of Digital Marketing (ISDM) offers practical digital marketing education across Pune, United States, United Kingdom, Singapore, and Germany. Explore programs in SEO, Performance Marketing, AI Marketing, and more.',
     // Replace with verified production domain
     siteUrl: 'https://isdm.edu.in',
     ogImage: '/images/Modern-ISDM-Campus-Entrance.webp',

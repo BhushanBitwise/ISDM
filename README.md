@@ -63,7 +63,7 @@ npm run preview
 | `/learning-experience` | `LearningExperiencePage` | Hands-on project methodology, peer feedback, workshop seminars |
 | `/events` | `EventsPage` | Masterclasses, workshops, honest upcoming batch announcements |
 | `/careers` | `CareersPage` | Portfolio building, client discovery, interview prep, freelancing |
-| `/locations` | `LocationsPage` | Multi-city directory: Pune, Nagpur, Singapore, Germany |
+| `/locations` | `LocationsPage` | Multi-city directory: Pune, United States, United Kingdom, Singapore, Germany |
 | `/locations/:slug` | `LocationDetailPage` | Individual location enquiry cards with honest status badges |
 | `/gallery` | `GalleryPage` | Data-driven gallery with category filter and keyboard-accessible lightbox |
 | `/contact` | `ContactPage` | Direct phone lines, WhatsApp integration, and controlled enquiry form |
@@ -83,9 +83,10 @@ All assets are located in `public/images/` and handled gracefully with fallback 
 | `02-classroom-training.png.webp` | Interactive training classroom | "Learn by Doing" Section, Learning Experience, Digital Marketing Program |
 | `03-office-interior.webp` | Contemporary office & workspaces | About Page, Program Feature, Gallery |
 | `04-singapore-branch.webp` | Singapore skyline & business district | Singapore Location Card & Detail Page |
-| `05-nagpur-branch.webp` | Nagpur landmark & learning hub | Nagpur Location Card & Detail Page |
 | `06-pune-branch.webp` | Pune education and IT corridor | Pune Location Card & Detail Page |
 | `07-germany-branch.webp` | Berlin, Germany European hub | Germany Location Card & Detail Page |
+| `11-us-branch.jpg` | United States campus & tech quarter | US Location Card & Detail Page, Gallery |
+| `12-uk-branch.jpg` | United Kingdom London campus & hub | UK Location Card & Detail Page, Gallery |
 | `08-student-collaboration.webp` | Students collaborating on campaign | Community Section, Learning Experience, Gallery |
 | `09-workshop-seminar.webp` | Seminar & workshop presentation | Events & Workshops Section, Gallery |
 | `10-student-community.webp` | Student team in discussion | Career Development Section, Gallery |
@@ -131,6 +132,6 @@ The reusable `EnquiryForm` component (`src/components/forms/EnquiryForm.jsx`) in
 
 ## ⚡ Outstanding Business Items to Verify
 
-1. **Physical Branch Addresses**: Locations (Pune, Nagpur, Singapore, Berlin) currently display regional area descriptions with `enquiry-only` and `planned` statuses. Update `src/data/locations.js` when physical branch leases or verified addresses are finalized.
+1. **Physical Branch Addresses**: Locations (Pune, United States, United Kingdom, Singapore, Berlin) currently display regional area descriptions with `enquiry-only` and `planned` statuses. Update `src/data/locations.js` when physical branch leases or verified addresses are finalized.
 2. **Batch Dates & Fees**: Honest placeholders are maintained without inventing fabricated fees or guaranteed placement figures.
 3. **Official Email**: Update `enquiry@isdm.edu.in` in `siteConfig.js` once the organizational mail server is established.

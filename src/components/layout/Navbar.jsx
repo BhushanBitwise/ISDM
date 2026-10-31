@@ -67,7 +67,7 @@ export default function Navbar() {
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
           <span className="pulse-dot-lime" style={{ width: '6px', height: '6px' }} />
           <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-            <span>Admissions & Program Enquiries 2025–26 — Pune · Nagpur · Singapore · Germany Hubs</span>
+            <span>Admissions & Program Enquiries 2025–26 — Pune · US · UK · Singapore · Germany Hubs</span>
             <span className="arrow">→</span>
           </Link>
         </div>
